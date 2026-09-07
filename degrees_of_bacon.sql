@@ -64,9 +64,21 @@ prompt
 
 set echo on
 
-host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_title.ctl data=data/imdb_title.csv skip=1 direct=true
-host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_person.ctl data=data/imdb_person.csv skip=1 direct=true
-host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_title.ctl data=data/imdb_title_1.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_title.ctl data=data/imdb_title_2.csv skip=1 direct=true
+
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_person.ctl data=data/imdb_person_1.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_person.ctl data=data/imdb_person_2.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_person.ctl data=data/imdb_person_3.csv skip=1 direct=true
+
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_1.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_2.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_3.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_4.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_5.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_6.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_7.csv skip=1 direct=true
+host sqlldr userid=dbdemo/dbdemo@db23 control=ctl/imdb_role_in_title.ctl data=data/imdb_role_in_title_8.csv skip=1 direct=true
 
 pause
 
@@ -217,6 +229,8 @@ clear screen
 set echo off
 prompt Let us pick a younger actor than Julia Roberts...
 prompt
+
+set echo on
 
 var some_actor varchar2(30)
 exec :some_actor := 'Ezra Miller'
