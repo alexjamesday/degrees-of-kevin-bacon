@@ -242,7 +242,82 @@ from graph_table
 (
   imdb_graph
   match
-    (p1 is person) ( - [e1 is person_to_title where e1.person_id != p2.person_id] -> (t1 is title) - [e2 is title_to_person where e2.person_id != e1.person_id] -> ){1, 3} (p2 is person)
+    (p1 is person) ( - [e1 is person_to_title where e1.person_id != p2.person_id] -> (t1 is title) - [e2 is title_to_person where e2.person_id != e1.person_id] -> ){1} (p2 is person)
+  where p1.name = :some_actor
+  and p1.birth_year is not null
+  and p2.name = 'Kevin Bacon'
+  and p2.birth_year is not null
+  columns
+  (
+    p1.name as from_person,
+    listagg(t1.name, ' -> ') as title_names,
+    count(t1.title_id) as path_length,
+    p2.name as to_person
+  )
+)
+where rownum <= 10
+.
+pause
+/
+
+pause
+
+select *
+from graph_table
+(
+  imdb_graph
+  match
+    (p1 is person) ( - [e1 is person_to_title where e1.person_id != p2.person_id] -> (t1 is title) - [e2 is title_to_person where e2.person_id != e1.person_id] -> ){2} (p2 is person)
+  where p1.name = :some_actor
+  and p1.birth_year is not null
+  and p2.name = 'Kevin Bacon'
+  and p2.birth_year is not null
+  columns
+  (
+    p1.name as from_person,
+    listagg(t1.name, ' -> ') as title_names,
+    count(t1.title_id) as path_length,
+    p2.name as to_person
+  )
+)
+where rownum <= 10
+.
+pause
+/
+
+pause
+
+select *
+from graph_table
+(
+  imdb_graph
+  match
+    (p1 is person) ( - [e1 is person_to_title where e1.person_id != p2.person_id] -> (t1 is title) - [e2 is title_to_person where e2.person_id != e1.person_id] -> ){3} (p2 is person)
+  where p1.name = :some_actor
+  and p1.birth_year is not null
+  and p2.name = 'Kevin Bacon'
+  and p2.birth_year is not null
+  columns
+  (
+    p1.name as from_person,
+    listagg(t1.name, ' -> ') as title_names,
+    count(t1.title_id) as path_length,
+    p2.name as to_person
+  )
+)
+where rownum <= 10
+.
+pause
+/
+
+pause
+
+select *
+from graph_table
+(
+  imdb_graph
+  match
+    (p1 is person) ( - [e1 is person_to_title where e1.person_id != p2.person_id] -> (t1 is title) - [e2 is title_to_person where e2.person_id != e1.person_id] -> ){6} (p2 is person)
   where p1.name = :some_actor
   and p1.birth_year is not null
   and p2.name = 'Kevin Bacon'
